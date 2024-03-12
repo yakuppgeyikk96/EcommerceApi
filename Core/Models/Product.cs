@@ -1,4 +1,5 @@
 
+using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
@@ -21,4 +22,7 @@ public class Product
   public int Stock { get; set; }
 
   public double Rate { get; set; }
+  
+  [BsonRepresentation(BsonType.ObjectId)]
+  public required string CategoryId { get; set; }
 }

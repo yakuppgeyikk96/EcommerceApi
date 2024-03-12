@@ -11,11 +11,11 @@ public class ProductService(IProductRepository productRepository)
     public async Task<Product?> GetAsync(string id) =>
         await productRepository.GetAsync(id);
 
-    public async Task CreateAsync(Product newBook) =>
-        await productRepository.CreateAsync(newBook);
+    public async Task CreateAsync(Product newProduct) =>
+        await productRepository.CreateAsync(newProduct);
 
-    public async Task UpdateAsync(string id, Product updatedBook) =>
-        await productRepository.UpdateAsync(id, updatedBook);
+    public async Task UpdateAsync(string id, Product updatedProduct) =>
+        await productRepository.UpdateAsync(id, updatedProduct);
 
     public async Task RemoveAsync(string id) =>
         await productRepository.RemoveAsync(id);

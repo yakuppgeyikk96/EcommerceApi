@@ -8,8 +8,13 @@ builder.Services.Configure<ProductDatabaseSettings>(
     builder.Configuration.GetSection("EcommerceDatabase")
 );
 
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
-builder.Services.AddScoped<ProductService>();
+builder.Services.Configure<CategoryDatabaseSettings>(builder.Configuration.GetSection("EcommerceDatabase"));
+
+builder.Services.AddSingleton<IProductRepository, ProductRepository>();
+builder.Services.AddSingleton<ProductService>();
+
+builder.Services.AddSingleton<ICategoryRepository, CategoryRepository>();
+builder.Services.AddSingleton<CategoryService>();
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

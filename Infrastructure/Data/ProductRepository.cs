@@ -10,16 +10,16 @@ public class ProductRepository : IProductRepository
     private readonly IMongoCollection<Product> _productsCollection;
 
     public ProductRepository(
-        IOptions<ProductDatabaseSettings> bookStoreDatabaseSettings)
+        IOptions<ProductDatabaseSettings> productStoreDatabaseSettings)
     {
         var mongoClient = new MongoClient(
-            bookStoreDatabaseSettings.Value.ConnectionString);
+            productStoreDatabaseSettings.Value.ConnectionString);
 
         var mongoDatabase = mongoClient.GetDatabase(
-            bookStoreDatabaseSettings.Value.DatabaseName);
+            productStoreDatabaseSettings.Value.DatabaseName);
 
         _productsCollection = mongoDatabase.GetCollection<Product>(
-            bookStoreDatabaseSettings.Value.ProductsCollectionName);
+            productStoreDatabaseSettings.Value.ProductsCollectionName);
     }
     public Task<List<Product>> GetAsync()
     {
